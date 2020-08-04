@@ -13,7 +13,7 @@ library(rnaturalearth)
 df <- occurrence("Porifera")
 
 df_sf <- df %>%
-  st_as_sf(coords = c("decimalLongitude", "decimalLatitude"), crs = 4326)
+  st_as_sf(coords = c("decimalLongitude", "decimalLatitude"), crs = 4326, remove = FALSE)
 
 # arctic
 
@@ -41,7 +41,7 @@ antarctic <- asds %>%
   st_union() %>%
   lapply(FUN = function(x) x[1]) %>%
   st_multipolygon() %>%
-  st_sfc(crs = st_crs(ccamlr))
+  st_sfc(crs = st_crs(arctic))
   
 ggplot() +
   geom_sf(data = antarctic, fill = "green", color = "green", alpha = 0.1)
@@ -75,7 +75,7 @@ ggplot() +
 
 df_selection <- df_sf %>%
   as.data.frame() %>%
-  select(id, dataset_id, institutionCode, collectionCode, catalogNumber, recordNumber, fieldNumber, locality, date_year, date_mid, eventDate, scientificName, originalScientificName, aphiaID, minimumDepthInMeters, maximumDepthInMeters, depth, coordinateUncertaintyInMeters, phylum, class, subclass, order, suborder, family, subfamily, genus, subgenus, species, subspecies, phylumid, classid, subclassid, orderid, suborderid, familyid, subfamilyid, genusid, subgenusid, speciesid, subspeciesid, flags, shoredistance, bathymetry, is_arctic, is_antarctic)
+  select(id, dataset_id, institutionCode, collectionCode, catalogNumber, recordNumber, fieldNumber, locality, decimalLongitude, decimalLatitude, date_year, date_mid, eventDate, scientificName, originalScientificName, aphiaID, minimumDepthInMeters, maximumDepthInMeters, depth, coordinateUncertaintyInMeters, phylum, class, subclass, order, suborder, family, subfamily, genus, subgenus, species, subspecies, phylumid, classid, subclassid, orderid, suborderid, familyid, subfamilyid, genusid, subgenusid, speciesid, subspeciesid, flags, shoredistance, bathymetry, is_arctic, is_antarctic)
 
 write.csv(df_selection, file = paste0("porifera_", format(Sys.time(), "%Y%m%d"), ".csv"), row.names = FALSE, na = "")
 
