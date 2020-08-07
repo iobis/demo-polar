@@ -10,7 +10,7 @@ library(rnaturalearth)
 
 # fetch occurrences
 
-df <- occurrence("Porifera")
+df <- occurrence("Porifera", qcfields = TRUE, dropped = "include")
 
 df_sf <- df %>%
   st_as_sf(coords = c("decimalLongitude", "decimalLatitude"), crs = 4326, remove = FALSE)
