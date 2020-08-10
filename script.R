@@ -80,7 +80,7 @@ df_joined <- df %>%
 # output
 
 df_selection <- df_joined %>%
-  select(id, dataset_id, institutionCode, collectionCode, catalogNumber, recordNumber, fieldNumber, locality, decimalLongitude, decimalLatitude, date_year, date_mid, eventDate, scientificName, originalScientificName, aphiaID, minimumDepthInMeters, maximumDepthInMeters, depth, coordinateUncertaintyInMeters, phylum, class, subclass, order, suborder, family, subfamily, genus, subgenus, species, subspecies, phylumid, classid, subclassid, orderid, suborderid, familyid, subfamilyid, genusid, subgenusid, speciesid, subspeciesid, flags, shoredistance, bathymetry, is_arctic, is_antarctic)
+  select(id, dataset_id, institutionCode, collectionCode, catalogNumber, recordNumber, fieldNumber, locality, decimalLongitude, decimalLatitude, date_year, date_mid, eventDate, scientificName, originalScientificName, aphiaID, minimumDepthInMeters, maximumDepthInMeters, depth, coordinateUncertaintyInMeters, phylum, class, subclass, order, suborder, family, subfamily, genus, subgenus, species, subspecies, phylumid, classid, subclassid, orderid, suborderid, familyid, subfamilyid, genusid, subgenusid, speciesid, subspeciesid, flags, missing, invalid, shoredistance, bathymetry, is_arctic, is_antarctic)
 
 ggplot() +
   geom_sf(data = ne_countries(returnclass = "sf"), color = "#000000", fill = "#eeeeee") +
