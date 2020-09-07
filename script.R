@@ -90,4 +90,5 @@ ggplot() +
   theme_void()
 
 write.csv(df_selection, file = paste0("porifera_", format(Sys.time(), "%Y%m%d"), ".csv"), row.names = FALSE, na = "")
+write.csv(df_joined, file = paste0("porifera_full_", format(Sys.time(), "%Y%m%d"), ".csv"), row.names = FALSE, na = "")
 
